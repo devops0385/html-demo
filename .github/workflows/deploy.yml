@@ -21,11 +21,11 @@ jobs:
           port: 22
           script: |
             apt update
-            apt install apache2
+            apt install apache2 -y
   deploy:
     name: Deploy to EC2 on main branch push
     runs-on: ubuntu-latest
-
+    needs: setup-webserver
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
