@@ -16,7 +16,8 @@ jobs:
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOSTNAME }}
-          username: ${{ secrets.USERNAME }}
+          username: ${{ secrets.USERNAME }}0
+
           key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
           port: 22
           script: |
@@ -43,7 +44,7 @@ jobs:
   deploy:
     name: Deploy to EC2 on main branch push
     runs-on: ubuntu-latest
-    needs: setup-webserver | install php
+    needs: setup-webserver
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
