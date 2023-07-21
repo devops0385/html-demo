@@ -23,7 +23,8 @@ jobs:
             apt update
             apt install apache2 -y
 
-    Setup-phpwebser:
+job:
+  setup-php:
       name: install php
       runs-on: ubuntu-latest
 
