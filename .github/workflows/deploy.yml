@@ -36,7 +36,6 @@ jobs:
             key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
             port: 22
             script: |
-            apt update
             apt install php
             apt -y install libapache2-mod-php
 
