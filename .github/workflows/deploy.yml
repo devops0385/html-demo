@@ -37,8 +37,8 @@ job:
             key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
             port: 22
             script: |
-            apt install php
-            apt -y install libapache2-mod-php
+              apt install php
+              apt -y install libapache2-mod-php
 
   deploy:
     name: Deploy to EC2 on main branch push
