@@ -23,22 +23,21 @@ jobs:
             apt update
             apt install apache2 -y
 
-job:
   setup-php:
-      name: install php
-      runs-on: ubuntu-latest
+    name: install php
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: install php
-          uses: appleboy/ssh-action@v0.1.10
-          with:
-            host: ${{ secrets.HOSTNAME }}
-            username: ${{ secrets.USERNAME }}
-            key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
-            port: 22
-            script: |
-              apt install php
-              apt -y install libapache2-mod-php
+    steps:
+      - name: install php
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
+          port: 22
+          script: |
+            apt install php
+            apt -y install libapache2-mod-php
 
   deploy:
     name: Deploy to EC2 on main branch push
