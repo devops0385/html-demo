@@ -7,6 +7,21 @@ on:
       - main
 
 jobs:
+  setup-webserver:
+    name: Install apache2
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: install apache2
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
+          port: 22
+          script: |
+            apt update
+            apt install apache2
   deploy:
     name: Deploy to EC2 on main branch push
     runs-on: ubuntu-latest
