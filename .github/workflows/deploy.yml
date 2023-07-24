@@ -43,7 +43,7 @@ jobs:
     name: install mysql
     runs-on: ubuntu-latest
 
-    Steps:
+    steps:
       - name: install mysql
         uses: appleboy/ssh-action@v0.1.10
         with:
