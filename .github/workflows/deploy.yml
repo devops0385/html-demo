@@ -20,8 +20,8 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
           port: 22
           script: |
-            apt update
-            apt install apache2 -y
+            sudo apt update
+            sudo apt install apache2 -y
 
   setup-php:
     needs: setup-webserver
@@ -37,8 +37,8 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
           port: 22
           script: |
-            apt install php
-            apt -y install libapache2-mod-php
+            sudo apt install php
+            sudo apt -y install libapache2-mod-php
 
   setup-mysql:
     needs: setup-php
@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
           port: 22
           script: |
-            apt install -y mariadb-server mariadb-client
+            sudo apt install -y mariadb-server mariadb-client
 
   deploy:
     name: Deploy to EC2 on main branch push
