@@ -24,6 +24,7 @@ jobs:
             apt install apache2 -y
 
   setup-php:
+    needs: setup-webserver
     name: install php
     runs-on: ubuntu-latest
 
