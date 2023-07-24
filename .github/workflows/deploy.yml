@@ -38,7 +38,8 @@ jobs:
           port: 22
           script: |
             apt install php
-            apt -y install libapache2-mod-php php-mysql          
+            apt -y install libapache2-mod-php php-mysql  
+            systemctl restart apache2        
 
   setup-mysql:
     needs: setup-php
