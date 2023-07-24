@@ -38,6 +38,7 @@ jobs:
           script: |
             apt install php
             apt -y install libapache2-mod-php
+            
   Setup-mysql:
     name : install mysql
     runs-on: ubuntu-latest
