@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
           port: 22
           script: |
-            apt install mariadb-server mariadb-client
+            apt install -y mariadb-server mariadb-client
 
   deploy:
     name: Deploy to EC2 on main branch push
