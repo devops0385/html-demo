@@ -55,6 +55,7 @@ jobs:
           port: 22
           script: |
             apt install -y mariadb-server mariadb-client
+              
 
   deploy:
     name: Deploy to EC2 on main branch push
@@ -72,3 +73,14 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOSTNAME }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_FOLDER }}
+
+      - name: Reset mysql user credential
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_SSH_KEY }}
+          port: 22
+          script: |
+            sudo mysql -uroot < /var/www/html/credentials.sql
+            sudo mysql -uroot < /var/www/html/database.sql
