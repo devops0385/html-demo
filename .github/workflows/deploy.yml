@@ -40,6 +40,7 @@ jobs:
             apt -y install libapache2-mod-php
 
   Setup-mysql:
+    needs: setup-php
     name: install mysql
     runs-on: ubuntu-latest
 
